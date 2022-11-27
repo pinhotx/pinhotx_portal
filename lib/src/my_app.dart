@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinhotx_portal/src/route_test/pages/seconde_route.dart';
 import 'package:pinhotx_portal/src/link_tree/pages/social_page.dart';
+import 'package:pinhotx_portal/src/home/pages/my_home_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -19,58 +20,9 @@ class MyApp extends StatelessWidget {
       },
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primaryColor: Colors.greenAccent,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 50, 31, 83),
       ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-      if (_counter > 10) {
-        Navigator.pushNamed(context, '/second');
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

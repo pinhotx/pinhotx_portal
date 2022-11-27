@@ -1,27 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:pinhotx_portal/src/link_tree/domain/models/social_link_model.dart';
 import 'package:pinhotx_portal/src/link_tree/widgets/outlined_link_widget.dart';
+/*import 'package:flutter/services.dart' show rootBundle;*/
+
+/*List<SocialLinkModel> socialLinkList =
+    SocialLinkModel.fromJson(getJson());*/
+
+List<SocialLinkModel> socialLinkList = [
+  SocialLinkModel(domain: "Twitch", uri: "twitch.tv", user: "pinhotx"),
+  SocialLinkModel(domain: "Glimesh", uri: "glimesh.tv", user: "pinhotx"),
+  SocialLinkModel(
+    domain: "Ko-fi",
+    uri: "ko-fi.com",
+    action: "Support Me",
+    showInList: true,
+  ),
+  SocialLinkModel(
+    domain: "KIZUKI",
+    uri: "twitch.tv",
+    action: "Support Zuki",
+    user: "kizuki_oki",
+  ),
+];
 
 class LinkTreeMainWidget extends StatelessWidget {
-  LinkTreeMainWidget({super.key});
+  const LinkTreeMainWidget({super.key});
 
-  List<SocialLinkModel> tiles = [
-    SocialLinkModel(
-      domain: "Twitch",
-      uriAddress: "https://twitch.tv/pinhotx",
-    ),
-    SocialLinkModel(
-      domain: "Glimesh",
-      uriAddress: "https://glimesh.tv/pinhotx",
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ListView.builder(
-        itemCount: tiles.length,
-        itemBuilder: (context, index) => OutlinedLinkWidget(
-          socialLink: tiles[index],
+      child: SizedBox(
+        width: 350,
+        child: ListView.separated(
+          shrinkWrap: true,
+          itemCount: socialLinkList.length,
+          itemBuilder: (context, index) => OutlinedLinkWidget(
+            socialLink: socialLinkList[index],
+          ),
+          separatorBuilder: (context, index) => const SizedBox(
+            height: 8,
+          ),
         ),
       ),
     );

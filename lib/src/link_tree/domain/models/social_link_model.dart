@@ -1,27 +1,54 @@
+import 'dart:convert';
+
 class SocialLinkModel {
   String domain;
-  String uriAddress;
-  String? showName;
-  SocialLinkModel(
-      {required this.domain, required this.uriAddress, this.showName});
+  String uri;
+  String user;
+  String protocol;
+  String? action;
+  bool showOnFooter;
+  bool showInList;
 
-  String get domainName {
-    return domain;
+  SocialLinkModel({
+    this.protocol = "https",
+    required this.domain,
+    required this.uri,
+    this.user = "tiagopinhotx",
+    this.action,
+    this.showOnFooter = true,
+    this.showInList = false,
+  });
+
+  factory SocialLinkModel.fromJson(Map<String, dynamic> json) {
+    return SocialLinkModel(
+      domain: json['domain'],
+      uri: json['uri'],
+      user: json['user'],
+      action: json['action'],
+      protocol: json['protocol'],
+      showInList: json['show-in-list'],
+      showOnFooter: json['show-on-footer'],
+    );
   }
 
-  set domainName(String domainName) {
-    domain = domainName;
+  static List<SocialLinkModel> socialLinkListJsonToModel(
+    String socialLinkListJSON,
+  ) {
+    final List socialLinkList = json.decode(socialLinkListJSON);
+    final List<SocialLinkModel> socialLinkModelList =
+        socialLinkList.map((item) => SocialLinkModel.fromJson(item)).toList();
+    return socialLinkModelList;
   }
 
-  String get uri {
-    return uriAddress;
+  String get checkedProtocol {
+    if (protocol == "http") return "https";
+    return protocol;
   }
 
   Uri get parsedUri {
-    return Uri.parse(uriAddress);
-  }
-
-  set uri(String uri) {
-    uriAddress = uri;
+    if (uri[uri.length - 1] == "/") {
+      return Uri.parse("$checkedProtocol://$uri$user");
+    }
+    return Uri.parse("$checkedProtocol://$uri/$user");
   }
 }

@@ -4,13 +4,31 @@ import 'package:pinhotx_portal/src/link_tree/domain/models/social_link_model.dar
 
 class OutlinedLinkWidget extends StatelessWidget {
   final SocialLinkModel socialLink;
-  const OutlinedLinkWidget({required this.socialLink, super.key});
+  final Size size;
+  final Color textColor;
+  final Color backgroundColor;
+
+  const OutlinedLinkWidget({
+    required this.socialLink,
+    this.size = const Size.fromHeight(40),
+    this.textColor = Colors.black,
+    this.backgroundColor = Colors.white24,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: OutlinedButton(
-        child: Text(socialLink.domainName),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: Colors.transparent,
+          fixedSize: size,
+          side: const BorderSide(color: Colors.greenAccent, width: 5),
+        ),
+        child: Text(
+          socialLink.domain,
+          style: TextStyle(color: textColor),
+        ),
         onPressed: () => launchUrl(socialLink.parsedUri),
       ),
     );
