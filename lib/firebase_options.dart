@@ -53,12 +53,12 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDvljz9Wly1ZNy7ZskUi_3wzGISFydXvoQ',
-    appId: '1:662561818170:web:9eec53f932e37ec49cd703',
-    messagingSenderId: '662561818170',
-    projectId: 'pinho-santiago',
-    authDomain: 'pinho-santiago.firebaseapp.com',
-    storageBucket: 'pinho-santiago.appspot.com',
-    measurementId: 'G-S4SB8YLKLJ',
+    apiKey: 'AIzaSyAAUcn3zSUDXGEf3VB0LBNQtrfOjTw9yuQ',
+    appId: '1:27115884962:web:f85b71ec5a9581b92462fb',
+    messagingSenderId: '27115884962',
+    projectId: 'tiagopinhotx',
+    authDomain: 'tiagopinhotx.firebaseapp.com',
+    storageBucket: 'tiagopinhotx.appspot.com',
+    measurementId: 'G-KCRRG96R69',
   );
 }
