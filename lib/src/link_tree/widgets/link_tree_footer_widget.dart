@@ -21,7 +21,7 @@ class LinkTreeFooter extends LinkTree {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: Colors.greenAccent,
+      color: Theme.of(context).bottomAppBarColor,
       child: SizedBox(
         height: 50,
         child: Align(

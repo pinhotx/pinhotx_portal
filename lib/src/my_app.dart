@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/',
+      initialRoute: '/social',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) => const MyHomePage(title: "Pinhotx"),
@@ -24,7 +24,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColor: Colors.greenAccent,
-        scaffoldBackgroundColor: const Color.fromARGB(255, 50, 31, 83),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 59, 0, 77),
+        backgroundColor: const Color.fromARGB(255, 59, 0, 77),
+        bottomAppBarColor: const Color.fromARGB(127, 23, 0, 30),
       ),
     );
   }

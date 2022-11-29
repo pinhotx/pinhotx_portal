@@ -5,31 +5,44 @@ import 'package:pinhotx_portal/src/link_tree/domain/models/social_link_model.dar
 class OutlinedLinkWidget extends StatelessWidget {
   final SocialLinkModel socialLink;
   final Size size;
-  final Color textColor;
-  final Color backgroundColor;
 
   const OutlinedLinkWidget({
     required this.socialLink,
     this.size = const Size.fromHeight(40),
-    this.textColor = Colors.black,
-    this.backgroundColor = Colors.white24,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Theme.of(context).backgroundColor,
+      shadowColor: Colors.green,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
-          foregroundColor: Colors.transparent,
+          backgroundColor: Theme.of(context).backgroundColor,
           fixedSize: size,
-          side: const BorderSide(color: Colors.greenAccent, width: 5),
+          side: BorderSide(color: socialLink.textColor, width: 3),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(12.0),
+            ),
+          ),
         ),
         child: Text(
           socialLink.action != null
-              ? socialLink.action.toString()
-              : socialLink.domain,
-          style: TextStyle(color: textColor),
+              ? socialLink.action.toString().toUpperCase()
+              : socialLink.domain.toUpperCase(),
+          style: TextStyle(
+            color: socialLink.textColor,
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+            fontFamilyFallback: const <String>[
+              "Verdana",
+              "Geneva",
+              "Tahoma",
+              "sans-serif"
+            ],
+          ),
         ),
         onPressed: () => launchUrl(socialLink.parsedUri),
       ),

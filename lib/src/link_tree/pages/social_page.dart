@@ -38,6 +38,10 @@ class SocialPage extends StatelessWidget {
               flex: 3,
               child: LinkTreeMainWidget(socialLinkList: socialLinkList),
             ),
+            const Expanded(
+              flex: 1,
+              child: SizedBox(),
+            ),
           ],
         ),
       ),

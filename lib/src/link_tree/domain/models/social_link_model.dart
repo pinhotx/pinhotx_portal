@@ -1,36 +1,24 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
-class SocialLinkModel {
-  /// Domain name
-  String domain;
+import '../data/social_links_data.dart';
 
-  /// Base URI for this domain
-  String uri;
-
-  /// Username or link username
-  String user;
-
-  /// Protocol for this link. HTTPS for default
-  String protocol;
-
-  /// Text for the Button on the Main List
-  String? action;
-
-  ///Set this link to show on footer
-  bool showOnFooter;
-
-  ///Set this link to show on the main List
-  bool showOnList;
-
+class SocialLinkModel extends SocialLinkData {
+  Color? __textColor;
   SocialLinkModel({
-    this.protocol = "https",
-    required this.domain,
-    required this.uri,
-    this.user = "tiagopinhotx",
-    this.action,
-    this.showOnFooter = true,
-    this.showOnList = false,
-  });
+    super.protocol,
+    required super.domain,
+    required super.uri,
+    super.user = "tiagopinhotx",
+    super.action,
+    super.hexTextColor,
+    super.showOnFooter,
+    super.showOnList,
+  }) {
+    __textColor =
+        hexTextColor != null ? HexColor(hexTextColor!) : Colors.greenAccent;
+  }
 
   /// Constructor for JSON Elements. Not lists
   factory SocialLinkModel.fromJson(Map<String, dynamic> json) {
@@ -39,10 +27,15 @@ class SocialLinkModel {
       uri: json['uri'],
       user: json['user'],
       action: json['action'],
+      hexTextColor: json['color'],
       protocol: json['protocol'],
       showOnList: json['show-on-list'],
       showOnFooter: json['show-on-footer'],
     );
+  }
+
+  Color get textColor {
+    return __textColor ?? Colors.greenAccent;
   }
 
   /// Constructor for JSON Lists. Not lists
