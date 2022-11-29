@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:pinhotx_portal/src/link_tree/widgets/abstract_link_tree.dart';
 import 'package:pinhotx_portal/src/link_tree/widgets/icon_link_widget.dart';
 
 import '../domain/models/social_link_model.dart';
 
-List<SocialLinkModel> socialLinkList = [
-  SocialLinkModel(domain: "Koo", uri: "kooapp.com/profile/"),
-  SocialLinkModel(domain: "Glimesh", uri: "glimesh.tv", user: "pinhotx"),
-  SocialLinkModel(
-    domain: "Ko-fi",
-    uri: "ko-fi.com",
-    showInList: true,
-  ),
-];
+class LinkTreeFooter extends LinkTree {
+  const LinkTreeFooter({required super.socialLinkList, super.key});
 
-class LinkTreeFooter extends StatelessWidget {
-  const LinkTreeFooter({super.key});
+  @override
+  filterList() {
+    List<SocialLinkModel> filteredList = [];
+    for (var element in socialLinkList) {
+      if (element.showOnFooter) {
+        filteredList.add(element);
+      }
+    }
+    return filteredList;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +30,9 @@ class LinkTreeFooter extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
-            itemCount: socialLinkList.length,
+            itemCount: filteredSocialLinkList.length,
             itemBuilder: (context, index) => IconLinkWidget(
-              socialLink: socialLinkList[index],
+              socialLink: filteredSocialLinkList[index],
             ),
             separatorBuilder: (context, index) => const SizedBox(
               width: 20,

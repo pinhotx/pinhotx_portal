@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pinhotx_portal/src/link_tree/pages/social_page.dart';
+import 'package:pinhotx_portal/src/link_tree/pages/static_social_page.dart';
 import 'package:pinhotx_portal/src/public/widgets/head_star.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -18,7 +18,7 @@ class MyHomePage extends StatelessWidget {
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const SocialPage(),
+              builder: (context) => const StaticSocialPage(),
             ),
           ),
           child: const Text("Social"),

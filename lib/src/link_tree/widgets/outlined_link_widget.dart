@@ -26,7 +26,9 @@ class OutlinedLinkWidget extends StatelessWidget {
           side: const BorderSide(color: Colors.greenAccent, width: 5),
         ),
         child: Text(
-          socialLink.domain,
+          socialLink.action != null
+              ? socialLink.action.toString()
+              : socialLink.domain,
           style: TextStyle(color: textColor),
         ),
         onPressed: () => launchUrl(socialLink.parsedUri),
