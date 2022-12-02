@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:pinhotx_portal/src/public/extensions/extensions.dart';
 import '../domain/models/social_link_model.dart';
 
 import 'package:pinhotx_portal/src/link_tree/pages/social_page.dart';

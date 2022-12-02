@@ -26,7 +26,7 @@ List<SocialLinkModel> socialLinkList = [
   SocialLinkModel(
     domain: "KIZUKI",
     uri: "twitch.tv",
-    action: "Follow Zuki",
+    action: "Don't Zuki",
     user: "kizuki_oki",
     hexTextColor: "F6D100",
     showOnFooter: false,
@@ -35,6 +35,7 @@ List<SocialLinkModel> socialLinkList = [
 ];
 
 class StaticSocialPage extends StatelessWidget {
+  /// The Social Page Scaffold with constant social Links
   const StaticSocialPage({super.key});
 
   @override

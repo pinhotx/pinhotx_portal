@@ -1,51 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:pinhotx_portal/src/link_tree/domain/models/social_link_model.dart';
+import 'package:pinhotx_portal/src/link_tree/widgets/link_tree_widget.dart';
+import 'package:pinhotx_portal/src/link_tree/widgets/outlined_link_widget.dart';
 
-class LinkTreeMainWidgetOld extends StatelessWidget {
-  const LinkTreeMainWidgetOld({super.key});
+class _ListViewTree extends StatelessWidget {
+  final List<SocialLinkModel> socialLinkList;
+
+  /// A List View widget made for Link Tree Main Widget. Pass a filtered Social Link List
+  const _ListViewTree(this.socialLinkList);
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(8),
-      children: <Widget>[
-        Container(
-          height: 50,
-          color: Colors.amber[600],
-          child: const Center(child: Text('Follow Me')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[500],
-          child: const Center(child: Text('Hire Me')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[100],
-          child: const Center(child: Text('Support Me')),
-        ),
-        SizedBox(
-          height: 50,
-          child: TextButton(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-            ),
-            onPressed: () => launchUrl(
-              Uri.parse('https://github.com/tiagopinhotx'),
-            ),
-            child: const Text('Github'),
-          ),
-        ),
-        OutlinedButton(
-          style: ButtonStyle(
-            fixedSize: MaterialStateProperty.all(const Size.fromHeight(50)),
-          ),
-          child: const Text("Eaí otário"),
-          onPressed: () => launchUrl(
-            Uri.parse('https://twitch.tv/tsgvitorio'),
-          ),
-        )
-      ],
+    return ListView.separated(
+      shrinkWrap: true,
+      itemCount: socialLinkList.length,
+      itemBuilder: (context, index) => OutlinedLinkWidget(
+        socialLink: socialLinkList[index],
+      ),
+      separatorBuilder: (context, index) => const SizedBox(
+        height: 8,
+      ),
+    );
+  }
+}
+
+class LinkTreeMainWidget extends LinkTree {
+  const LinkTreeMainWidget({required super.socialLinkList, super.key});
+
+  @override
+  filterList() {
+    List<SocialLinkModel> filteredList = [];
+    for (var element in socialLinkList) {
+      if (element.showOnList) {
+        filteredList.add(element);
+      }
+    }
+    return filteredList;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        width: 350,
+        child: _ListViewTree(filteredSocialLinkList),
+      ),
     );
   }
 }

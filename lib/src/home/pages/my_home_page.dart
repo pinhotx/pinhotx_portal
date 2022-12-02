@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pinhotx_portal/src/link_tree/pages/static_social_page.dart';
-import 'package:pinhotx_portal/src/public/widgets/head_star.dart';
+import 'package:pinhotx_portal/src/public/widgets/layout/head_star.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});

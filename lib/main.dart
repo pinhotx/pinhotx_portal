@@ -4,7 +4,7 @@ import 'package:pinhotx_portal/src/my_app.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:pinhotx_portal/firebase_options.dart';
-import 'package:firebase_app_check/firebase_app_check.dart';
+//import 'package:firebase_app_check/firebase_app_check.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

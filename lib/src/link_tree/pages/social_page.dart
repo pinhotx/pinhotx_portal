@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pinhotx_portal/src/link_tree/widgets/link_tree_footer_widget.dart';
-import 'package:pinhotx_portal/src/public/widgets/head_star.dart';
+import 'package:pinhotx_portal/src/public/widgets/layout/footer_root.dart';
+import 'package:pinhotx_portal/src/public/widgets/layout/head_star.dart';
 import '../domain/models/social_link_model.dart';
-import '../widgets/link_tree_main_widget.dart';
+
+import 'package:pinhotx_portal/src/link_tree/widgets/link_tree_widget.dart';
 
 class SocialPage extends StatelessWidget {
   final List<SocialLinkModel> socialLinkList;
@@ -36,7 +37,10 @@ class SocialPage extends StatelessWidget {
             ),
             Expanded(
               flex: 3,
-              child: LinkTreeMainWidget(socialLinkList: socialLinkList),
+              child: SizedBox(
+                width: 350,
+                child: LinkTreeWidget(socialLinkList: socialLinkList),
+              ),
             ),
             const Expanded(
               flex: 1,
@@ -45,7 +49,9 @@ class SocialPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: LinkTreeFooter(socialLinkList: socialLinkList),
+      bottomNavigationBar: FooterRoot(
+        child: LinkTreeWidget.footer(socialLinkList: socialLinkList),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {},
         child: const Text("Nusei"),

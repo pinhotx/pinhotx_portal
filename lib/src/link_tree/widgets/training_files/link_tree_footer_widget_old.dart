@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pinhotx_portal/src/link_tree/widgets/abstract_link_tree.dart';
+import 'package:pinhotx_portal/src/link_tree/widgets/link_tree_widget.dart';
 import 'package:pinhotx_portal/src/link_tree/widgets/icon_link_widget.dart';
 
-import '../domain/models/social_link_model.dart';
+import '../../domain/models/social_link_model.dart';
 
+/// A LinkTree Widget for footer
 class LinkTreeFooter extends LinkTree {
   const LinkTreeFooter({required super.socialLinkList, super.key});
 
