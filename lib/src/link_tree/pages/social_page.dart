@@ -64,7 +64,7 @@ class SocialPage extends StatelessWidget {
         child: showFooter
             ? LinkTreeWidget.footer(socialLinkList: socialLinkList)
             : const Text(
-                "Under Developement | Made by Tiago \"Pinhotx\" Silveira (Pinho Santiago)",
+                "Under Development | Made by Pinhotx (Tiago Silveira)",
                 style: TextStyle(color: Colors.green),
               ),
       ),
