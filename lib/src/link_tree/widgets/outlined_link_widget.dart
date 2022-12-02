@@ -24,7 +24,7 @@ class OutlinedLinkWidget extends StatelessWidget {
           side: BorderSide(color: socialLink.textColor, width: 3),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(12.0),
+              Radius.circular(4.0),
             ),
           ),
         ),

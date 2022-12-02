@@ -23,7 +23,7 @@ class IconLinkWidget extends StatelessWidget {
         child: IconButton(
           onPressed: () => launchUrl(socialLink.parsedUri),
           icon: const Icon(
-            Icons.download,
+            Icons.facebook,
           ),
           iconSize: 24,
         ),
